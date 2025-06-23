@@ -16,7 +16,7 @@ func subscribeCmd() *cobra.Command {
 		Use:   "subscribe",
 		Short: "Subscribe to a topic",
 		Run: func(cmd *cobra.Command, args []string) {
-			client, err := mqtt.NewClient(broker, port)
+			client, err := mqtt.NewClient(broker, port, username, password, tlsEnabled, caCert, clientCert, clientKey, insecureSkipVerify)
 			if err != nil {
 				fmt.Println("Failed to connect:", err)
 				os.Exit(1)

@@ -87,6 +87,31 @@ All commands support the following global flags:
 - `--broker`, `-b`   : MQTT broker address (default: `localhost`)
 - `--port`, `-p`     : MQTT WebSocket port (default: `9001`)
 - `--topic`, `-t`    : MQTT topic (default: `test/topic`)
+- `--username`       : Username for broker authentication (optional)
+- `--password`       : Password for broker authentication (optional)
+- `--tls`            : Enable TLS (wss://) connection (optional)
+- `--ca-cert`        : Path to CA certificate file (optional, for self-signed brokers)
+- `--client-cert`    : Path to client certificate file (optional, for mTLS)
+- `--client-key`     : Path to client private key file (optional, for mTLS)
+- `--insecure`       : Skip server certificate verification (not recommended)
+
+### TLS Usage
+- For most public brokers, just use `--tls` (no certs needed).
+- For self-signed/private brokers, use `--tls --ca-cert <path>`.
+- Only use `--client-cert` and `--client-key` if the broker requires client authentication (mTLS).
+- Use `--insecure` to skip server verification (for development only).
+
+**Examples:**
+```sh
+# Connect to a public broker with TLS (no certs needed)
+mqtt-client publish --tls -b test.mosquitto.org -p 8081 -t my/topic
+
+# Connect to a broker with a self-signed certificate
+mqtt-client subscribe --tls --ca-cert /path/to/ca.pem -b mybroker.local -p 8081 -t my/topic
+
+# Connect with mutual TLS (client certs)
+mqtt-client publish --tls --ca-cert /path/to/ca.pem --client-cert /path/to/client.crt --client-key /path/to/client.key -b mybroker.local -p 8081 -t my/topic
+```
 
 ### Publish
 Publish a message to a topic, or (by default) publish the current timestamp every 10 seconds.
