@@ -30,6 +30,32 @@ A simple command-line MQTT WebSocket client written in Go. This tool allows you 
 
 ---
 
+## 📥 Quick Download by Operating System
+
+Download the appropriate binary for your operating system and architecture using `wget`:
+
+```sh
+# For Linux
+wget https://github.com/atakanaydinbas/mqtt-client/releases/download/v1.0.0/mqtt-client-linux-<arch>
+
+# For macOS (darwin)
+wget https://github.com/atakanaydinbas/mqtt-client/releases/download/v1.0.0/mqtt-client-darwin-<arch>
+```
+
+After downloading, make it executable and move it to your PATH:
+
+```sh
+chmod +x mqtt-client-<os>-<arch>
+sudo mv mqtt-client-<os>-<arch> /usr/local/bin/mqtt-client
+```
+
+> **Note:**  
+> Replace `<os>` with `linux` or `darwin` depending on your operating system.  
+> Replace `<arch>` with `amd64` for most modern PCs (x86_64) or `arm64` for ARM-based devices (such as Apple Silicon Macs or Raspberry Pi).  
+> For example, use `mqtt-client-linux-amd64` for Linux on x86_64, or `mqtt-client-darwin-arm64` for macOS on Apple Silicon.
+
+---
+
 ## Building from Source
 
 If you cannot download the binary from the Releases section, you can build the CLI tool from source. Make sure you have [Go 1.21+](https://golang.org/) installed.
