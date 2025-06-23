@@ -9,24 +9,10 @@ import (
 )
 
 var message string
-var username string
-var password string
-var tlsEnabled bool
-var caCert string
-var clientCert string
-var clientKey string
-var insecureSkipVerify bool
 
 func init() {
 	publishCmd := publishCmd()
 	publishCmd.Flags().StringVarP(&message, "message", "m", "", "Message to publish (overrides timestamp loop)")
-	publishCmd.Flags().StringVarP(&username, "username", "u", "", "MQTT username")
-	publishCmd.Flags().StringVarP(&password, "password", "p", "", "MQTT password")
-	publishCmd.Flags().BoolVarP(&tlsEnabled, "tls", "t", false, "Enable TLS")
-	publishCmd.Flags().StringVarP(&caCert, "ca-cert", "c", "", "CA certificate")
-	publishCmd.Flags().StringVarP(&clientCert, "client-cert", "e", "", "Client certificate")
-	publishCmd.Flags().StringVarP(&clientKey, "client-key", "k", "", "Client key")
-	publishCmd.Flags().BoolVarP(&insecureSkipVerify, "insecure-skip-verify", "i", false, "Skip TLS verification")
 	rootCmd.AddCommand(publishCmd)
 }
 
