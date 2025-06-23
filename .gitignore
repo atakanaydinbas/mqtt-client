@@ -1,0 +1,8 @@
+# Go
+go/bin/
+go/pkg/
+*.exe
+*.out
+
+# General
+.DS_Store 
